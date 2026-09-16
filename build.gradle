@@ -1,0 +1,42 @@
+// Plugins cho Spring Boot va Java
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.storex'
+version = '1.0.0'
+
+// Cau hinh phien ban Java
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Khai bao cac thu vien can thiet
+dependencies {
+    // Spring Boot Starter WebFlux cho Reactive Non-blocking
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // Lombok ho tro sinh code tu dong
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // Thu vien kiem thu Spring Boot va Reactive Reactor
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+}
+
+// Cau hinh chay test voi JUnit Platform
+tasks.named('test') {
+    useJUnitPlatform()
+}

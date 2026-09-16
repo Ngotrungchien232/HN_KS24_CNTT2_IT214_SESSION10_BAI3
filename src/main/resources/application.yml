@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+storex:
+  promotion-service:
+    base-url: http://promotion-service
+    timeout:
+      connect-ms: 2000
+      response-ms: 2000
